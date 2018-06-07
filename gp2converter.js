@@ -28,11 +28,9 @@ function convert_graph(data){
 		console.log(id);
 		console.log(label);
 		if(label == "empty"){
-			digraph = digraph + "\n     " + id + " [label= \" \", xlabel=\"1\"]" 
+			label = "~";
 		}
-		else{
-			digraph = digraph + "\n     " + id + " [label= \"" + label + "\"]";
-		}
+		digraph = digraph + "\n     " + id + " [label= <" + label = "<BR /><FONT POINT-SIZE="10">" + id = "</FONT>>]" 
 		console.log(digraph);
 	}
 	digraph = digraph + "}";
