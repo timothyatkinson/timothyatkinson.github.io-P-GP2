@@ -32,10 +32,10 @@ function convert_graph(data){
 		}
 		console.log(digraph);
 	}
-	digraph = diagraph + "}";
+	digraph = digraph + "}";
 	console.log(digraph);
 	console.log(nodes);
 	console.log(edges);
 	console.log("Data: " + data);
-	return "digraph G { a1 -> b3 }"
+	return digraph;
 }
