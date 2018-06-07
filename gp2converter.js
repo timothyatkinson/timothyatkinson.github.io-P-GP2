@@ -14,9 +14,19 @@ function convert_graph(data){
 		console.log(node);
 		node = node.split("(")[1];
 		id = node.split(",")[0];
+		label = node.split(",")[1];
+		label = label.trim();
 		id = id.trim();
 		console.log(id);
+		if(label == "empty"){
+			digraph = diagraph + "\n     " + id + " [label= <{<I>" + id + "</I>}>]" 
+		}
+		else{
+			digraph = diagraph + "\n     " + id + " [label= <{<I>" + id + "</I>}>:" + label + "]";
+		}
+		console.log(digraph);
 	}
+	console.log(digraph);
 	console.log(nodes);
 	console.log(edges);
 	console.log("Data: " + data);
