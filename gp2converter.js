@@ -3,7 +3,8 @@ function convert_graph(data){
 	edges = data.split("|")[1];
 	nodes = nodes.split("[")[1];
 	edges = edges.split("]")[0];
-	edges = edges.replace("]", "");
+	nodes = nodes.trim();
+	edges = edges.trim();
 	
 	var digraph = "digraph G {";	
 	var nodeList = nodes.split(")");
