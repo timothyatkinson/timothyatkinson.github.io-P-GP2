@@ -12,6 +12,11 @@ function convert_graph(data){
 	for(i = 0; i < nodeList.length; i++){
 		node = nodeList[i];
 		console.log("Node: " + i);
+		node = node.trim();
+		if(!node.includes(",")){
+			i = nodeList.length;
+			break;
+		}
 		console.log(node);
 		node = node.split("(")[1];
 		id = node.split(",")[0];
