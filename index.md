@@ -37,5 +37,7 @@ where not edge(1, 3)
 
 ## How do I get started?
 
-## Publications on GP 2
+## How can I find out more?
+
+You can [contact us](/contact) at any time or take a look at our various [publications](/publications) for more information.
 
