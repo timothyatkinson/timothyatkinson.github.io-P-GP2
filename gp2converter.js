@@ -28,7 +28,7 @@ function convert_graph(data){
 		console.log(id);
 		console.log(label);
 		if(label == "empty"){
-			digraph = digraph + "\n     " + id + " [label= \" \"]" 
+			digraph = digraph + "\n     " + id + " [label= \" \", xlabel=\"1\"]" 
 		}
 		else{
 			digraph = digraph + "\n     " + id + " [label= \"" + label + "\"]";
