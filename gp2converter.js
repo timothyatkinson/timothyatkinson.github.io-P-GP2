@@ -24,11 +24,12 @@ function convert_graph(data){
 		label = label.trim();
 		id = id.trim();
 		console.log(id);
+		console.log(label);
 		if(label == "empty"){
 			digraph = digraph + "\n     " + id + " [label= <{<I>" + id + "</I>}>]" 
 		}
 		else{
-			digraph = digraph + "\n     " + id + " [label= <{<I>" + id + "</I>}>:" + label + "]";
+			digraph = digraph + "\n     " + id + " [label= <<I>" + id + "</I>>:" + label + "]";
 		}
 		console.log(digraph);
 	}
