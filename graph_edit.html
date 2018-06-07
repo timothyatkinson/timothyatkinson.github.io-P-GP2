@@ -150,35 +150,19 @@
 		<a href = "http://timothyatkinson.github.io">Return to home page</a>.
       </div>
       <div id="panes" class="split split-horizontal">
-        <div id="editor" class="split"># Paste your GP 2 graph here.
+        <div id="editor" class="split">// Paste your GP 2 graph here.
 
-digraph G {
-
-	subgraph cluster_0 {
-		style=filled;
-		color=lightgrey;
-		node [style=filled,color=white];
-		a0 -> a1 -> a2 -> a3;
-		label = "process #1";
-	}
-
-	subgraph cluster_1 {
-		node [style=filled];
-		b0 -> b1 -> b2 -> b3;
-		label = "process #2";
-		color=blue
-	}
-	start -> a0;
-	start -> b0;
-	a1 -> b3;
-	b2 -> a3;
-	a3 -> a0;
-	a3 -> end;
-	b3 -> end;
-
-	start [shape=Mdiamond];
-	end [shape=Msquare];
-}
+[
+	(0, empty)
+	(1, empty)
+	(2, empty)
+	(3, empty)
+	|
+	(4, 0, 1, empty)
+	(5, 1, 2, empty)
+	(6, 2, 3, empty)
+	(7, 3, 0, empty)
+]
 </div>
         <div id="graph" class="split">
           <div id="options">
