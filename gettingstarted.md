@@ -72,6 +72,10 @@ link(a, b, c, d, e : list)
 	(e2, n2, n3, d)
 	(e3, n1, n3, empty)
 ]
+interface = 
+{
+	n1, n2, n3
+}
 where not edge(1, 3)
 ```
 
@@ -98,4 +102,31 @@ And an individual rule is of the form:
 interface = { [INTERFACE] }
 [CONDITION]
 ```
+
+Where graphs are of the same form as the graph we saw earlier. 
+
+So what does our program mean? The only line of the main program is `Main = link!`. This `!`  means that the rule `link` will be applied as long as possible - e.g. it will be applied
+until it is no longer applicable. Applying the rule `link` firstly searches for a match for its left hand side; 3 adjacent nodes where there is not an edge
+from the 1st node to the 3rd node. Then, once a match is found, the left hand side is transformed into the right hand side by inserting an edge from the 1st
+node to the 3rd node. The 'interface' describes which nodes survive; none of the 3 matched nodes `n1, n2, n3` are deleted. 
+
+Now we can compile our program by calling:
+
+```
+gp2 PATH/TO/transitive_closure.gp2
+```
+
+This will generate c code in the directory *"/tmp/gp2"*. We can build this generated c code into a program by calling:
+
+```
+make
+```
+
+This will generate a file *"/tmp/gp2/gp2run"* which is a runnable implementation of our program. We can run this program on our graph by calling:
+
+```
+./gp2run PATH/TO/cycle.host
+```
+
+If everything's gone to plan this will generate a file *"/tmp/gp2/gp2.output"* which contains this produced graph:
 
