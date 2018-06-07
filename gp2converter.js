@@ -32,6 +32,7 @@ function convert_graph(data){
 		}
 		console.log(digraph);
 	}
+	digraph = diagraph + "}";
 	console.log(digraph);
 	console.log(nodes);
 	console.log(edges);
