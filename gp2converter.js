@@ -24,7 +24,7 @@ function convert_graph(data){
 		if(label == "empty"){
 			label = "";
 		}
-		digraph = digraph + "\n     " + id + " [label= <" + label + "<BR /><BR /><FONT POINT-SIZE=\"9\">" + id + "</FONT>>]";
+		digraph = digraph + "\n     " + id + " [label= <" + label + "<BR /><BR /><FONT POINT-SIZE=\"9\">" + id + "</FONT>>, shape=ellipse]";
 	}	
 	var edgeList = edges.split(")");
 	for(i = 0; i < edgeList.length; i++){
