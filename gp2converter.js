@@ -10,6 +10,7 @@ function convert_graph(data){
 	var i;
 	for(i = 0; i < nodeList.length; i++){
 		node = nodeList[i];
+		console.log(node);
 		node = node.split("(")[1];
 		id = node.split(",")[0];
 		id = id.trim();
