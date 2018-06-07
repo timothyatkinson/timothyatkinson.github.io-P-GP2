@@ -19,10 +19,10 @@ function convert_graph(data){
 		id = id.trim();
 		console.log(id);
 		if(label == "empty"){
-			digraph = diagraph + "\n     " + id + " [label= <{<I>" + id + "</I>}>]" 
+			digraph = digraph + "\n     " + id + " [label= <{<I>" + id + "</I>}>]" 
 		}
 		else{
-			digraph = diagraph + "\n     " + id + " [label= <{<I>" + id + "</I>}>:" + label + "]";
+			digraph = digraph + "\n     " + id + " [label= <{<I>" + id + "</I>}>:" + label + "]";
 		}
 		console.log(digraph);
 	}
