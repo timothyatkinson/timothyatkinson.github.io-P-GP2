@@ -6,7 +6,7 @@ function convert_graph(data){
 	nodes = nodes.trim();
 	edges = edges.trim();
 	
-	var digraph = "digraph G {";	
+	var digraph = "digraph G { forcelabels=true;\n";	
 	var nodeList = nodes.split(")");
 	var i;
 	for(i = 0; i < nodeList.length; i++){
@@ -28,10 +28,10 @@ function convert_graph(data){
 		console.log(id);
 		console.log(label);
 		if(label == "empty"){
-			digraph = digraph + "\n     " + id + " [label= \"" + id + "\"]" 
+			digraph = digraph + "\n     " + id + " [label= \"\", xlabel = \"" + id +  + "\"]" 
 		}
 		else{
-			digraph = digraph + "\n     " + id + " [label= \"" + id + ":   " + label + "\"]";
+			digraph = digraph + "\n     " + id + " [label= \"" + label + "\", xlabel = \"" + id +  + "\"]";
 		}
 		console.log(digraph);
 	}
