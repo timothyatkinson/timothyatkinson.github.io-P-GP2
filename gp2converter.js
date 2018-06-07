@@ -22,8 +22,6 @@ function convert_graph(data){
 		id = node.split(",")[0];
 		label = node.split(",")[1];
 		label = label.trim();
-		var re = new RegExp("\"", 'g');
-		label = label.replace(re, "\\\"");
 		id = id.trim();
 		console.log(id);
 		console.log(label);
