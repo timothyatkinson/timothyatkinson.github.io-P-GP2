@@ -1,3 +1,3 @@
-## Graph Programming with P-GP 2
+## Graph Programming with GP 2
 
-GP 2 is a graph programming language 
+GP 2 is a visual, rule-based graph programming language 
