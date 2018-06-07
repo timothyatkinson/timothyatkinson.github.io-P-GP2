@@ -28,10 +28,10 @@ function convert_graph(data){
 		console.log(id);
 		console.log(label);
 		if(label == "empty"){
-			digraph = digraph + "\n     " + id + " [label= \"\", xlabel = \"" + id +  + "\"]" 
+			digraph = digraph + "\n     " + id + " [label= \"\", xlabel = \"" + id + "\"]" 
 		}
 		else{
-			digraph = digraph + "\n     " + id + " [label= \"" + label + "\", xlabel = \"" + id +  + "\"]";
+			digraph = digraph + "\n     " + id + " [label= \"" + label + "\", xlabel = \"" + id +  \"]";
 		}
 		console.log(digraph);
 	}
