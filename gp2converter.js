@@ -30,7 +30,7 @@ function convert_graph(data){
 		if(label == "empty"){
 			label = "~";
 		}
-		digraph = digraph + "\n     " + id + " [label= <" + label + "<BR /><FONT POINT-SIZE="10">" + id + "</FONT>>]";
+		digraph = digraph + "\n     " + id + " [label= <" + label + "<BR /><FONT POINT-SIZE=\"10\">" + id + "</FONT>>]";
 		console.log(digraph);
 	}
 	digraph = digraph + "}";
