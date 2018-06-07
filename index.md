@@ -8,6 +8,33 @@ Below is an example GP 2 program:
 
 ![alt text](/images/link.png "A program for computing the transitive closure of a graph.")
 
+And here is that program in text form (as the existing compiler would expect it):
+
+```
+Main = link!
+
+link(a, b, c, d, e : list)
+[
+	(n1, a)
+	(n2, c)
+	(n3, e)
+	|
+	(e1, n1, n2, b)
+	(e2, n2, n3, d)
+]
+=>
+[
+	(n1, a)
+	(n2, c)
+	(n3, e)
+	|
+	(e1, n1, n2, b)
+	(e2, n2, n3, d)
+	(e3, n1, n3, empty)
+]
+where not edge(1, 3)
+```
+
 ## How do I get started?
 
 ## Publications on GP 2
