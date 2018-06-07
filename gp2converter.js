@@ -28,7 +28,7 @@ function convert_graph(data){
 	}	
 	var edgeList = edges.split(")");
 	for(i = 0; i < edgeList.length; i++){
-		var edge = edgelist[i];
+		var edge = edgeList[i];
 		edge = edge.trim();
 		if(!edge.includes(",")){
 			i = edgeList.length;
