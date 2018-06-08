@@ -1,4 +1,4 @@
-Publications on Graph Programs and GP 2
+# Publications on Graph Programs and GP 2
 
 ### Graph Programs and the Language GP 2
 
