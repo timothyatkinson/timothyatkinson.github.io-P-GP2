@@ -1,25 +1,11 @@
-<html>
+## Publications on Graph Programs and GP 2
 
-<head>
-<TITLE>Publications on Graph Programs and GP 2</TITLE>
-</head>
+### Graph Programs and the Language GP 2
 
-<body>
-<body BGCOLOR ="#FFFFFF" text="000000" LINK="#0000FF" ALINK="#00CC00" VLINK="#000099">
-
-<p>
-<h3><font size=+1>Graph Programs and the Language GP 2</font></h3>
-<UL>
-<p>
-
-<LI>
-D. Plump<BR>
-<A HREF="http://www.cs.york.ac.uk/plasma/publications/pdf/Plump.JLAMP.17.pdf">From Imperative to Rule-based Graph Programs</A>
-<BR>
-<EM>Journal of Logical and Algebraic Methods in Programming</EM> 88:154-173, 2017.
-<BR>
-doi: <A HREF="https://doi.org/10.1016/j.jlamp.2016.12.001">10.1016/j.jlamp.2016.12.001</A>
-<p>
+* D. Plump 
+  [From Imperative to Rule-based Graph Programs] (http://www.cs.york.ac.uk/plasma/publications/pdf/Plump.JLAMP.17.pdf)
+  Journal of Logical and Algebraic Methods in Programming 88:154-173, 2017.
+  doi: [10.1016/j.jlamp.2016.12.001](https://doi.org/10.1016/j.jlamp.2016.12.001)
 
 <LI>
 C. Bak and D. Plump<BR>
