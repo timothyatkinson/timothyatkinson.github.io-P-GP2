@@ -2,22 +2,14 @@
 
 ### Graph Programs and the Language GP 2
 
-* D. Plump 
-
-  [From Imperative to Rule-based Graph Programs](http://www.cs.york.ac.uk/plasma/publications/pdf/Plump.JLAMP.17.pdf)
-  
-  Journal of Logical and Algebraic Methods in Programming 88:154-173, 2017.
-  
+* D. Plump  
+  [From Imperative to Rule-based Graph Programs](http://www.cs.york.ac.uk/plasma/publications/pdf/Plump.JLAMP.17.pdf)  
+  *Journal of Logical and Algebraic Methods in Programming* 88:154-173, 2017.  
   doi: [10.1016/j.jlamp.2016.12.001](https://doi.org/10.1016/j.jlamp.2016.12.001)
 
-<LI>
-C. Bak and D. Plump<BR>
-<A HREF="http://www.cs.york.ac.uk/plasma/publications/pdf/BakPlump.ICGT.16.pdf">Compiling Graph Programs to C</A>
-<BR>
-<EM>Proc. International Conference on Graph Transformation (ICGT 2016)</EM>. Lecture Notes in Computer Science 9761, pages 102-117. Springer, 2016.
-<BR>
-doi: <A HREF="https://doi.org/10.1007/978-3-319-40530-8_7">10.1007/978-3-319-40530-8_7</A>
-<p>
+* C. Bak and D. Plump [Compiling Graph Programs to C](http://www.cs.york.ac.uk/plasma/publications/pdf/BakPlump.ICGT.16.pdf) 
+  *Proc. International Conference on Graph Transformation (ICGT 2016)*. Lecture Notes in Computer Science 9761, pages 102-117. Springer, 2016.  
+  doi: [10.1007/978-3-319-40530-8_7](https://doi.org/10.1007/978-3-319-40530-8_7)
 
 <P>
 <LI>
