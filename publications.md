@@ -3,8 +3,11 @@
 ### Graph Programs and the Language GP 2
 
 * D. Plump 
-  [From Imperative to Rule-based Graph Programs] (http://www.cs.york.ac.uk/plasma/publications/pdf/Plump.JLAMP.17.pdf)
+
+  [From Imperative to Rule-based Graph Programs](http://www.cs.york.ac.uk/plasma/publications/pdf/Plump.JLAMP.17.pdf)
+  
   Journal of Logical and Algebraic Methods in Programming 88:154-173, 2017.
+  
   doi: [10.1016/j.jlamp.2016.12.001](https://doi.org/10.1016/j.jlamp.2016.12.001)
 
 <LI>
