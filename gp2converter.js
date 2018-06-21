@@ -61,7 +61,7 @@ function convert_graph(data){
 		if(label == "empty"){
 			label = "";
 		}
-		digraph = digraph + "\n     " + source + "->" + target + " [label= <" + label + "> ";
+		digraph = digraph + "\n     " + source + "->" + target + " [label= <<span style=\"background-color: #FFFFFF\">" + label + "</span>> ";
 		if(mark != "Uncoloured"){
 			digraph = digraph + ", color=" + mark;
 		}
