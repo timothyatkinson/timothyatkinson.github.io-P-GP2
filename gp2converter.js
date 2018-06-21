@@ -120,7 +120,9 @@ function convert_rule(ruledata){
 	var decl = extended_split(ruledata, ")", 2)[0] + ")";
 	var rule = extended_split(ruledata, ")", 2)[1];
 	var L = convert_graph(rule.split("=>")[0], "subgraph", "L");
-	var R = convert_graph(rule.split("=>")[1], "subgraph", "R");
+	var rvar = rule.split("=>")[1];
+	var rg = rvar.split("]")[0] + "]";
+	var R = convert_graph(rg, "subgraph", "R");
 	var digraph = "digraph Rule { forcelabels=true; graph[K=1];rankdir=LR;\n";
 	var decllist = extended_split(decl, "(", 2);
 	var vars = "(" + decllist[1];
@@ -129,7 +131,21 @@ function convert_rule(ruledata){
 	digraph = digraph + L;
 	digraph = digraph + "\n" + R;
 
-	digraph = digraph + "\n}}\n";
+	var inface = rvar.split("]")[0].split("{")[1].split("}")[0];
+	inface = inface.trim();
+	var inface_list = inface.split(",");
+	var i;
+	digraph = digraph + "\n}";
+	for(i = 0; i < inface_list.length; i++){
+		var inf = inface_list[i];
+		inf = inf.trim();
+		if(inf == ""){
+			i = edgeList.length;
+			break;
+		}
+		digraph = digraph + "    " + inf + "L->" + inf + "R [constraint=false,color=grey,style=dashed,arrowhead=none]\n";
+	}
+	digraph = digraph + "\n}\n";
 	console.log(digraph);
 	return digraph;
 }
