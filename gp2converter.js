@@ -23,11 +23,19 @@ function convert_graph(data, type, name){
 	nodes = nodes.trim();
 	edges = edges.trim();
 
-	var digraph = type + " " + name + " { forcelabels=true;";
+	var gid = name;
+	if(type == "subgraph"){
+		gid = "cluster"+gid;
+	}
+
+	var digraph = type + " " + gid + " { forcelabels=true;";
 	if(type == "subgraph"){
 		digraph = digraph + " label = <" + name + ">;";
 	}
 	digraph = digraph + "\n";
+	if(type=="subgraph"){
+		  digraph = digraph + gid + "InvisSrc [style = invis ]\n";
+	}
 	var nodeList = nodes.split(")");
 	var i;
 	for(i = 0; i < nodeList.length; i++){
@@ -112,9 +120,11 @@ function convert_rule(ruledata){
 	console.log(rule);
 	var L = convert_graph(rule.split("=>")[0], "subgraph", "L");
 	var R = convert_graph(rule.split("=>")[1], "subgraph", "R");
-	var digraph = "digraph Rule {\n";
+	var digraph = "digraph Rule { forcelabels=true; rankdir=LR;\n";
 	digraph = digraph + L;
 	digraph = digraph + "\n" + R;
+
+	digraph = digraph + "clusterLInvisSrc -> clusterRInvisSrc [ltail=clusterL, lhead=clusterR]\n";
 	digraph = digraph + "\n}\n";
 	console.log(digraph);
 	return digraph;
