@@ -126,8 +126,8 @@ function convert_rule(ruledata){
 	var vars = "(" + decllist[1];
 	decl = decl.replace("// Paste your GP 2 Rule here.", "");
 	digraph = digraph + "subgraph cluster_RuleGraph { label = <" + decl + ">; pencolor=transparent ;\n"
-	digraph = digraph + R;
-	digraph = digraph + "\n" + L;
+	digraph = digraph + L;
+	digraph = digraph + "\n" + R;
 
 	digraph = digraph + "\n}}\n";
 	console.log(digraph);
