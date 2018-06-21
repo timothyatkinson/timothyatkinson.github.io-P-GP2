@@ -32,7 +32,7 @@ function convert_graph(data){
 		}
 		digraph = digraph + "\n     " + id + " [label= <" + label + "<BR /><BR /><FONT POINT-SIZE=\"9\">" + id + "</FONT>>, shape=ellipse";
 		if(mark != "Uncoloured"){
-			digraph = digraph + ", fillcolor=" + mark;
+			digraph = digraph + ", style=filled, fillcolor=" + mark;
 		}
 		digraph = digraph + "]";
 	}
@@ -60,7 +60,7 @@ function convert_graph(data){
 		}
 		if(label == "empty"){
 			label = "";
-			digraph = digraph + "\n     " + source + "->" + target + " [label = <\"\">"
+			digraph = digraph + "\n     " + source + "->" + target + " [label = <>"
 		}
 		else{
 			digraph = digraph + "\n     " + source + "->" + target + " [label= <<table border=\"0\" cellborder=\"0\" cellspacing=\"0\"><tr><td bgcolor=\"white\">" + label + "</td></tr></table>> ";
