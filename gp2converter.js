@@ -69,7 +69,7 @@ function convert_graph(data, type, name){
 			newnodes = newnodes + ", style=filled, fillcolor=" + mark;
 		}
 		newnodes = newnodes + "]";
-		nodes = newnodes + "\n" + nodes;
+		nodes = nodes + newnodes + "\n";
 	}
 	digraph = digraph + nodes;
 	var edgeList = edges.split(")");
