@@ -23,7 +23,11 @@ function convert_graph(data, type, name){
 	nodes = nodes.trim();
 	edges = edges.trim();
 
-	var digraph = type + " " + name + " { forcelabels=true;\n";
+	var digraph = type + " " + name + " { forcelabels=true;";
+	if(type == "subgraph"){
+		digraph = digraph + " label = <" + name + ">;";
+	}
+	digraph = digraph + "\n";
 	var nodeList = nodes.split(")");
 	var i;
 	for(i = 0; i < nodeList.length; i++){
@@ -87,7 +91,7 @@ function convert_graph(data, type, name){
 		}
 		digraph = digraph + "]";
 	}
-	digraph = digraph + "}";
+	digraph = digraph + "\n}\n";
 	console.log(digraph);
 	return digraph;
 }
@@ -98,7 +102,12 @@ function convert_rule(ruledata){
 	console.log(decl);
 	var rule = extended_split(ruledata, ")", 2)[1];
 	console.log(rule);
-	var digraph = convert_graph(rule.split("=>")[0], "digraph", "L");
+	var L = convert_graph(rule.split("=>")[0], "subgraph", "L");
+	var R = convert_graph(rule.split("=>")[1], "subgraph", "R");
 	console.log(digraph);
+	var digraph = "digraph Rule {\n";
+	digraph = digraph + L;
+	digraph = digraph + "\n" + R;
+	digraph = digraph + "\n}\n";
 	return digraph;
 }
