@@ -5,8 +5,8 @@ function convert_graph(data){
 	edges = edges.split("]")[0];
 	nodes = nodes.trim();
 	edges = edges.trim();
-	
-	var digraph = "digraph G { forcelabels=true;\n";	
+
+	var digraph = "digraph G { forcelabels=true;\n";
 	var nodeList = nodes.split(")");
 	var i;
 	for(i = 0; i < nodeList.length; i++){
@@ -21,11 +21,21 @@ function convert_graph(data){
 		var label = node.split(",")[1];
 		label = label.trim();
 		id = id.trim();
+		var labelmark = label.split("#");
+		var mark = "Uncoloured"
+		if(labelmark.length > 1){
+			label = labelmark[0].trim();
+			mark = labelmark[1].trim();
+		}
 		if(label == "empty"){
 			label = "";
 		}
-		digraph = digraph + "\n     " + id + " [label= <" + label + "<BR /><BR /><FONT POINT-SIZE=\"9\">" + id + "</FONT>>, shape=ellipse]";
-	}	
+		digraph = digraph + "\n     " + id + " [label= <" + label + "<BR /><BR /><FONT POINT-SIZE=\"9\">" + id + "</FONT>>, shape=ellipse";
+		if(mark != "Uncoloured"){
+			digraph = digraph + ", color=" + mark;
+		}
+		digraph = digraph + "]";
+	}
 	var edgeList = edges.split(")");
 	for(i = 0; i < edgeList.length; i++){
 		var edge = edgeList[i];
@@ -42,11 +52,21 @@ function convert_graph(data){
 		label = label.trim();
 		source = source.trim();
 		target = target.trim();
+		var labelmark = label.split("#");
+		var mark = "Uncoloured"
+		if(labelmark.length > 1){
+			label = labelmark[0].trim();
+			mark = labelmark[1].trim();
+		}
 		if(label == "empty"){
 			label = "";
 		}
-		digraph = digraph + "\n     " + source + "->" + target + " [label= <" + label + ">]";
-	}	
+		digraph = digraph + "\n     " + source + "->" + target + " [label= <" + label + "> ";
+		if(mark != "Uncoloured"){
+			digraph = digraph + ", color=" + mark;
+		}
+		digraph = digraph + "]";
+	}
 	digraph = digraph + "}";
 	return digraph;
 }
