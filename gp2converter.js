@@ -131,11 +131,11 @@ function convert_rule(ruledata){
 	digraph = digraph + L;
 	digraph = digraph + "\n" + R;
 
-	var inface = rvar.split("]")[0].split("{")[1].split("}")[0];
+	var inface = ((rvar.split("]")[0]).split("{")[1]).split("}")[0];
 	inface = inface.trim();
 	var inface_list = inface.split(",");
 	var i;
-	digraph = digraph + "\n}";
+	digraph = digraph + "\n}\n";
 	for(i = 0; i < inface_list.length; i++){
 		var inf = inface_list[i];
 		inf = inf.trim();
