@@ -97,10 +97,10 @@ function convert_graph(data, type, name){
 		}
 		if(label == "empty"){
 			label = "";
-			digraph = digraph + "\n     " + source + "->" + target + " [label = <>"
+			digraph = digraph + "\n     " + source + "->" + target + " [constraint=false;label = <>"
 		}
 		else{
-			digraph = digraph + "\n     " + source + "->" + target + " [label= <<table border=\"0\" cellborder=\"0\" cellspacing=\"0\"><tr><td bgcolor=\"white\">" + label + "</td></tr></table>> ";
+			digraph = digraph + "\n     " + source + "->" + target + " [constraint=false;label= <<table border=\"0\" cellborder=\"0\" cellspacing=\"0\"><tr><td bgcolor=\"white\">" + label + "</td></tr></table>> ";
 		}
 		if(mark != "Uncoloured"){
 			digraph = digraph + ", color=" + mark;
