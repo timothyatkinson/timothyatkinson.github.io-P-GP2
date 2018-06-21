@@ -68,6 +68,7 @@ function convert_graph(data, type, name){
 		newnodes = newnodes + "]";
 		nodes = newnodes + "\n" + nodes;
 	}
+	digraph = digraph + nodes;
 	var edgeList = edges.split(")");
 	for(i = 0; i < edgeList.length; i++){
 		var edge = edgeList[i];
