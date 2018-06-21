@@ -13,7 +13,7 @@ function extended_split(str, separator, max) {
     }
     out.push(str.substring(index));
     return out;
-};
+}
 
 function convert_graph(data, type, name){
 	var nodes = data.split("|")[0];
@@ -52,7 +52,7 @@ function convert_graph(data, type, name){
 		label = label.trim();
 		id = id.trim();
 		var labelmark = label.split("#");
-		var mark = "Uncoloured"
+		var mark = "Uncoloured";
 		if(labelmark.length > 1){
 			label = labelmark[0].trim();
 			mark = labelmark[1].trim();
@@ -93,14 +93,14 @@ function convert_graph(data, type, name){
 		source = source.trim();
 		target = target.trim();
 		var labelmark = label.split("#");
-		var mark = "Uncoloured"
+		var mark = "Uncoloured";
 		if(labelmark.length > 1){
 			label = labelmark[0].trim();
 			mark = labelmark[1].trim();
 		}
 		if(label == "empty"){
 			label = "";
-			digraph = digraph + "\n     " + source + "->" + target + " [label = <>"
+			digraph = digraph + "\n     " + source + "->" + target + " [label = <>";
 		}
 		else{
 			digraph = digraph + "\n     " + source + "->" + target + " [label= <<table border=\"0\" cellborder=\"0\" cellspacing=\"0\"><tr><td bgcolor=\"white\">" + label + "</td></tr></table>> ";
@@ -127,7 +127,7 @@ function convert_rule(ruledata){
 	var decllist = extended_split(decl, "(", 2);
 	var vars = "(" + decllist[1];
 	decl = decl.replace("// Paste your GP 2 Rule here.", "");
-	digraph = digraph + "subgraph cluster_RuleGraph { label = <" + decl + ">; pencolor=transparent ;\n"
+	digraph = digraph + "subgraph cluster_RuleGraph { label = <" + decl + ">; pencolor=transparent ;\n";
 	digraph = digraph + L;
 	digraph = digraph + "\n" + R;
 	var infacevar = rvar.split("]")[1];
@@ -144,7 +144,7 @@ function convert_rule(ruledata){
 		var inf = inface_list[i];
 		inf = inf.trim();
 		if(inf == ""){
-			i = edgeList.length;
+			i = inface_list.length;
 			break;
 		}
 		digraph = digraph + "    " + inf + "L->" + inf + "R [constraint=false,color=grey,style=dashed,arrowhead=none]\n";
