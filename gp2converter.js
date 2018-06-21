@@ -121,7 +121,7 @@ function convert_rule(ruledata){
 	var rule = extended_split(ruledata, ")", 2)[1];
 	var L = convert_graph(rule.split("=>")[0], "subgraph", "L");
 	var R = convert_graph(rule.split("=>")[1], "subgraph", "R");
-	var digraph = "digraph Rule { forcelabels=true; graph[K=1];\n";
+	var digraph = "digraph Rule { forcelabels=true; graph[K=1];rankdir=LR;\n";
 	var decllist = extended_split(decl, "(", 2);
 	var vars = "(" + decllist[1];
 	decl = decl.replace("// Paste your GP 2 Rule here.", "");
