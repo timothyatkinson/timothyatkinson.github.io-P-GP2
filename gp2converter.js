@@ -94,7 +94,7 @@ function convert_graph(data, type, name){
 		}
 		if(label == "empty"){
 			label = "";
-			digraph = digraph + "\n     " + source + "->" + target + " [constraint=false,label = <>"
+			digraph = digraph + "\n     " + source + "->" + target + " [label = <>"
 		}
 		else{
 			digraph = digraph + "\n     " + source + "->" + target + " [label= <<table border=\"0\" cellborder=\"0\" cellspacing=\"0\"><tr><td bgcolor=\"white\">" + label + "</td></tr></table>> ";
@@ -115,14 +115,14 @@ function convert_rule(ruledata){
 	var rule = extended_split(ruledata, ")", 2)[1];
 	var L = convert_graph(rule.split("=>")[0], "subgraph", "L");
 	var R = convert_graph(rule.split("=>")[1], "subgraph", "R");
-	var digraph = "digraph Rule { forcelabels=true; rankdir=TB; compound=true;\n";
+	var digraph = "digraph Rule { forcelabels=true;\n";
 	var decllist = extended_split(decl, "(", 2);
 	var vars = "(" + decllist[1];
-	digraph = digraph + "label = <" + decl + ">;\n"
-	digraph = digraph + L;
-	digraph = digraph + "\n" + R;
+	digraph = digraph + "subgraph cluster_RuleGraph { label = <" + decl + ">;\n"
+	digraph = digraph + R;
+	digraph = digraph + "\n" + L;
 
-	digraph = digraph + "\n}\n";
+	digraph = digraph + "\n}}\n";
 	console.log(digraph);
 	return digraph;
 }
