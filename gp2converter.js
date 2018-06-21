@@ -30,7 +30,7 @@ function convert_graph(data, type, name){
 
 	var digraph = type + " " + gid + " { forcelabels=true;";
 	if(type == "subgraph"){
-		digraph = digraph + " label = <" + name + ">;";
+		digraph = digraph + " label = <" + name + ">; pencolor=black; ";
 	}
 	digraph = digraph + "\n";
 	var nodeList = nodes.split(")");
@@ -118,7 +118,8 @@ function convert_rule(ruledata){
 	var digraph = "digraph Rule { forcelabels=true;\n";
 	var decllist = extended_split(decl, "(", 2);
 	var vars = "(" + decllist[1];
-	digraph = digraph + "subgraph cluster_RuleGraph { label = <" + decl + ">;\n"
+	decl = decl.replace("// Paste your GP 2 Rule here." "");
+	digraph = digraph + "subgraph cluster_RuleGraph { label = <" + decl + ">; pencolor=transparent ;\n"
 	digraph = digraph + R;
 	digraph = digraph + "\n" + L;
 
