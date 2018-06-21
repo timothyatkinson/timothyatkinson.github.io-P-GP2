@@ -118,7 +118,7 @@ function convert_rule(ruledata){
 	var digraph = "digraph Rule { forcelabels=true;\n";
 	var decllist = extended_split(decl, "(", 2);
 	var vars = "(" + decllist[1];
-	decl = decl.replace("// Paste your GP 2 Rule here." "");
+	decl = decl.replace("// Paste your GP 2 Rule here.", "");
 	digraph = digraph + "subgraph cluster_RuleGraph { label = <" + decl + ">; pencolor=transparent ;\n"
 	digraph = digraph + R;
 	digraph = digraph + "\n" + L;
