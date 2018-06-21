@@ -240,8 +240,8 @@
       }
       document.querySelector("#output").classList.add("working");
       document.querySelector("#output").classList.remove("error");
-      worker = new Worker("./worker.js");
-      worker.onmessagerule = function(e) {
+      worker = new Worker("./workerrule.js");
+      worker.onmessage = function(e) {
         document.querySelector("#output").classList.remove("working");
         document.querySelector("#output").classList.remove("error");
 

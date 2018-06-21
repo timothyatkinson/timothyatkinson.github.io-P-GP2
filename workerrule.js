@@ -1,8 +1,7 @@
 importScripts("bower_components/viz.js/viz.js");
 importScripts("gp2converter.js");
-
-onmessage = function(e) {
+onmessagerule = function(e) {
 	console.log(e.data.src);
-  var result = Viz(convert_graph(e.data.src, "digraph", "G"), e.data.options);
+  var result = Viz(convert_rule(e.data.src), e.data.options);
   postMessage(result);
 }

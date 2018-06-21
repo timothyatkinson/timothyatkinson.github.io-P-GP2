@@ -1,4 +1,4 @@
-function convert_graph(data){
+function convert_graph(data, type, name){
 	var nodes = data.split("|")[0];
 	var edges = data.split("|")[1];
 	nodes = nodes.split("[")[1];
@@ -6,7 +6,7 @@ function convert_graph(data){
 	nodes = nodes.trim();
 	edges = edges.trim();
 
-	var digraph = "digraph G { forcelabels=true;\n";
+	var digraph = type + " " + name + " { forcelabels=true;\n";
 	var nodeList = nodes.split(")");
 	var i;
 	for(i = 0; i < nodeList.length; i++){
@@ -71,6 +71,15 @@ function convert_graph(data){
 		digraph = digraph + "]";
 	}
 	digraph = digraph + "}";
+	console.log(digraph);
+	return digraph;
+}
+
+function convert_rule(ruledata){
+
+	var decl = ruledata.split(")")[0];
+	var rule = ruledata.split(")")[1];
+	var digraph = convert_graph(rule.split("=>")[0], "digraph", "L");
 	console.log(digraph);
 	return digraph;
 }
