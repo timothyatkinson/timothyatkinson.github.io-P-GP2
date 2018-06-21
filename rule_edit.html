@@ -146,23 +146,33 @@
 
     <div id="app">
       <div id="header">
-        <b>GP 2 Online Graph Visualiser</b> &mdash; Powered by <a href="http://viz-js.com/">viz-js</a>.<br/>
+        <b>GP 2 Online Rule Visualiser</b> &mdash; Powered by <a href="http://viz-js.com/">viz-js</a>.<br/>
 		<a href = "http://timothyatkinson.github.io">Return to home page</a>.
       </div>
       <div id="panes" class="split split-horizontal">
-        <div id="editor" class="split">// Paste your GP 2 graph here.
-
-[
-	(0, "A")
-	(1, 1:"C")
-	(2, "B")
-	(3, 2:"D")
-	|
-	(4, 0, 1, empty)
-	(5, 1, 2, empty)
-	(6, 2, 3, empty)
-	(7, 3, 0, empty)
-]
+        <div id="editor" class="split">// Paste your GP 2 Rule here.
+        add_loop(a, b : list; n : int)
+        [
+        	(n0, a:n#red)
+        	(n1, b)
+        	|
+        	(e0, n1, n0, empty#red)
+        	(5, 1, 2, empty)
+        	(6, 2, 3, empty)
+        	(7, 3, 0, empty)
+        ]
+        =>
+        [
+        	(n0, a:n#red)
+        	(n1, b#red)
+        	|
+        	(e0, n1, n0, empty#red)
+        	(e1, n0, n0, empty#blue)
+        ]
+        interface = {
+          n0, n1
+        }
+        where indeg(n0) = 1
 </div>
         <div id="graph" class="split">
           <div id="options">
@@ -231,7 +241,7 @@
       document.querySelector("#output").classList.add("working");
       document.querySelector("#output").classList.remove("error");
       worker = new Worker("./worker.js");
-      worker.onmessage = function(e) {
+      worker.onmessagerule = function(e) {
         document.querySelector("#output").classList.remove("working");
         document.querySelector("#output").classList.remove("error");
 
