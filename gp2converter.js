@@ -130,8 +130,9 @@ function convert_rule(ruledata){
 	digraph = digraph + "subgraph cluster_RuleGraph { label = <" + decl + ">; pencolor=transparent ;\n"
 	digraph = digraph + L;
 	digraph = digraph + "\n" + R;
-
-	var inface = ((rvar.split("]")[0]).split("{")[1]).split("}")[0];
+	var infacevar = (rvar.split("]")[1];
+	var inface = infacevar.split("{")[1];
+	inface = inface.split("}")[0];
 	inface = inface.trim();
 	var inface_list = inface.split(",");
 	var i;
