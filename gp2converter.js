@@ -51,7 +51,11 @@ function convert_graph(data, type, name){
 		if(label == "empty"){
 			label = "";
 		}
-		digraph = digraph + "\n     " + id + " [label= <" + label + "<BR /><BR /><FONT POINT-SIZE=\"9\">" + id + "</FONT>>, shape=ellipse";
+		var idmod = id;
+		if(type == "subgraph"){
+			idmod = id + name;
+		}
+		digraph = digraph + "\n     " + idmod + " [label= <" + label + "<BR /><BR /><FONT POINT-SIZE=\"9\">" + id + "</FONT>>, shape=ellipse";
 		if(mark != "Uncoloured"){
 			digraph = digraph + ", style=filled, fillcolor=" + mark;
 		}
@@ -69,6 +73,10 @@ function convert_graph(data, type, name){
 		var id = edge.split(",")[0];
 		var source = edge.split(",")[1];
 		var target = edge.split(",")[2];
+		if(type == "subgraph"){
+			source = source + name;
+			target = target + name;
+		}
 		var label = edge.split(",")[3];
 		label = label.trim();
 		source = source.trim();
@@ -104,10 +112,10 @@ function convert_rule(ruledata){
 	console.log(rule);
 	var L = convert_graph(rule.split("=>")[0], "subgraph", "L");
 	var R = convert_graph(rule.split("=>")[1], "subgraph", "R");
-	console.log(digraph);
 	var digraph = "digraph Rule {\n";
 	digraph = digraph + L;
 	digraph = digraph + "\n" + R;
 	digraph = digraph + "\n}\n";
+	console.log(digraph);
 	return digraph;
 }
