@@ -94,7 +94,7 @@ function convert_graph(data, type, name){
 
 function convert_rule(ruledata){
 
-	var decl = extended_split(ruledata, ")", 2)[0];
+	var decl = extended_split(ruledata, ")", 2)[0] + ")";
 	console.log(decl);
 	var rule = extended_split(ruledata, ")", 2)[1];
 	console.log(rule);
