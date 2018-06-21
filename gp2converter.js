@@ -32,6 +32,9 @@ function convert_graph(data, type, name){
 	if(type == "subgraph"){
 		digraph = digraph + " label = <" + name + ">; pencolor=black; ";
 	}
+	else{
+		digraph = digraph + " graph [K=1];";
+	}
 	digraph = digraph + "\n";
 	var nodeList = nodes.split(")");
 	var i;
@@ -97,10 +100,10 @@ function convert_graph(data, type, name){
 		}
 		if(label == "empty"){
 			label = "";
-			digraph = digraph + "\n     " + source + "->" + target + " [constraint=false;label = <>"
+			digraph = digraph + "\n     " + source + "->" + target + " [label = <>"
 		}
 		else{
-			digraph = digraph + "\n     " + source + "->" + target + " [constraint=false;label= <<table border=\"0\" cellborder=\"0\" cellspacing=\"0\"><tr><td bgcolor=\"white\">" + label + "</td></tr></table>> ";
+			digraph = digraph + "\n     " + source + "->" + target + " [label= <<table border=\"0\" cellborder=\"0\" cellspacing=\"0\"><tr><td bgcolor=\"white\">" + label + "</td></tr></table>> ";
 		}
 		if(mark != "Uncoloured"){
 			digraph = digraph + ", color=" + mark;
@@ -118,7 +121,7 @@ function convert_rule(ruledata){
 	var rule = extended_split(ruledata, ")", 2)[1];
 	var L = convert_graph(rule.split("=>")[0], "subgraph", "L");
 	var R = convert_graph(rule.split("=>")[1], "subgraph", "R");
-	var digraph = "digraph Rule { forcelabels=true;\n";
+	var digraph = "digraph Rule { forcelabels=true; graph[K=1];\n";
 	var decllist = extended_split(decl, "(", 2);
 	var vars = "(" + decllist[1];
 	decl = decl.replace("// Paste your GP 2 Rule here.", "");

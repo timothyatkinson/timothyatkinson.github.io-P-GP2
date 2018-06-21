@@ -32,20 +32,20 @@
       flex-direction: column;
       -webkit-flex-direction: column;
     }
-    
+
     #options {
       flex: 0 0 auto;
       -webkit-flex: 0 0 auto;
     }
-    
+
     #output {
       flex: 1 1 auto;
       -webkit-flex: 1 1 auto;
       position: relative;
       overflow: auto;
     }
-    
-    
+
+
     #editor {
       border-right: 1px solid #ccc;
     }
@@ -55,25 +55,25 @@
       padding: 8px;
       text-align: center;
     }
-    
+
     #header b {
       font-size: 18px;
     }
-    
+
     #options {
       background: #eee;
       border-bottom: 1px solid #ccc;
       padding: 8px;
     }
-    
+
     #options label {
       margin-right: 8px;
     }
-    
+
     #options #raw.disabled {
       opacity: 0.5;
     }
-    
+
     #output svg {
       position: absolute;
       top: 0;
@@ -81,7 +81,7 @@
       width: 100%;
       height: 100%;
     }
-    
+
     #output #text {
       font-size: 12px;
       font-family: monaco, courier, monospace;
@@ -93,22 +93,22 @@
       height: 100%;
       overflow: auto;
     }
-    
+
     #output img {
       display: block;
       margin: 0 auto;
     }
-    
+
     #output.working svg, #output.error svg,
     #output.working #text, #output.error #text,
     #output.working img, #output.error img {
       opacity: 0.4;
     }
-    
+
     #output.error #error {
       display: inherit;
     }
-    
+
     #output #error {
       display: none;
       position: absolute;
@@ -139,11 +139,11 @@
       height: 100%;
       float: left;
     }
-    
+
     </style>
   </head>
   <body>
-    
+
     <div id="app">
       <div id="header">
         <b>GP 2 Online Graph Visualiser</b> &mdash; Powered by <a href="http://viz-js.com/">viz-js</a>.<br/>
@@ -169,15 +169,10 @@
             <label id="engine">
               Engine:
               <select>
-                <option selected>circo</option>
-                <option>dot</option>
-                <option>fdp</option>
-                <option>neato</option>
-                <option>osage</option>
-                <option>twopi</option>
+                <option selected>fdp</option>
               </select>
             </label>
-            
+
             <label id="format">
               Format:
               <select>
@@ -189,7 +184,7 @@
                 <option>ps</option>
               </select>
             </label>
-            
+
             <label id="raw">
               <input type="checkbox"> Show raw output
             </label>
@@ -200,7 +195,7 @@
         </div>
       </div>
     </div>
-    
+
     <script src="./js/ace/ace.js"></script>
     <script src="./bower_components/viz.js/viz.js"></script>
     <script src="./bower_components/fabric.js/dist/fabric.min.js"></script>
@@ -211,14 +206,14 @@
     var resizeEvent = new Event("paneresize");
     Split(['#editor', '#graph'], {
       sizes: [25, 75],
-      onDragEnd: function() { 
+      onDragEnd: function() {
         var svgOutput = document.getElementById("svg_output");
         if (svgOutput != null) {
           svgOutput.dispatchEvent(resizeEvent);
         }
       }
     });
-    
+
     var editor = ace.edit("editor");
     editor.getSession().setMode("ace/mode/dot");
     var parser = new DOMParser();
@@ -234,28 +229,28 @@
       worker.onmessage = function(e) {
         document.querySelector("#output").classList.remove("working");
         document.querySelector("#output").classList.remove("error");
-        
+
         result = e.data;
-        
+
         updateOutput();
       }
       worker.onerror = function(e) {
         document.querySelector("#output").classList.remove("working");
         document.querySelector("#output").classList.add("error");
-        
+
         var message = e.message === undefined ? "An error occurred while processing the graph input." : e.message;
-        
+
         var error = document.querySelector("#error");
         while (error.firstChild) {
           error.removeChild(error.firstChild);
         }
-        
+
         document.querySelector("#error").appendChild(document.createTextNode(message));
-        
+
         console.error(e);
         e.preventDefault();
       }
-      
+
       var params = {
         src: editor.getSession().getDocument().getValue(),
         options: {
@@ -263,17 +258,17 @@
           format: document.querySelector("#format select").value
         }
       };
-      
+
       // Instead of asking for png-image-element directly, which we can't do in a worker,
       // ask for SVG and convert when updating the output.
-      
+
       if (params.options.format == "png-image-element") {
         params.options.format = "svg";
       }
-      
+
       worker.postMessage(params);
     }
-    
+
     function updateOutput() {
       var graph = document.querySelector("#output");
       var svg = graph.querySelector("svg");
@@ -288,11 +283,11 @@
       if (img) {
         graph.removeChild(img);
       }
-      
+
       if (!result) {
         return;
       }
-      
+
       if (document.querySelector("#format select").value == "svg" && !document.querySelector("#raw input").checked) {
         var svg = parser.parseFromString(result, "image/svg+xml").documentElement;
         svg.id = "svg_output";
@@ -324,11 +319,11 @@
       updateGraph();
       beforeUnloadMessage = "Your changes will not be saved.";
     });
-    
+
     window.addEventListener("beforeunload", function(e) {
       return beforeUnloadMessage;
     });
-    
+
     document.querySelector("#engine select").addEventListener("change", function() {
       updateGraph();
     });
@@ -340,16 +335,16 @@
         document.querySelector("#raw").classList.add("disabled");
         document.querySelector("#raw input").disabled = true;
       }
-      
+
       updateGraph();
     });
     document.querySelector("#raw input").addEventListener("change", function() {
       updateOutput();
     });
-    
+
     updateGraph();
-    
+
     </script>
-    
+
   </body>
 </html>
