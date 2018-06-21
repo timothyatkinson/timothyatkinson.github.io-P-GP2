@@ -68,5 +68,6 @@ function convert_graph(data){
 		digraph = digraph + "]";
 	}
 	digraph = digraph + "}";
+	console.log(digraph);
 	return digraph;
 }
