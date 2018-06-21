@@ -25,7 +25,7 @@ function convert_graph(data, type, name){
 
 	var gid = name;
 	if(type == "subgraph"){
-		gid = "cluster"+gid;
+		gid = "cluster_"+gid;
 	}
 
 	var digraph = type + " " + gid + " { forcelabels=true;";
@@ -34,7 +34,7 @@ function convert_graph(data, type, name){
 	}
 	digraph = digraph + "\n";
 	if(type=="subgraph"){
-		  digraph = digraph + gid + "InvisSrc [style = invis ]\n";
+		  digraph = digraph + name + "InvisSrc [style = invis ]\n";
 	}
 	var nodeList = nodes.split(")");
 	var i;
@@ -116,8 +116,8 @@ function convert_rule(ruledata){
 
 	var decl = extended_split(ruledata, ")", 2)[0] + ")";
 	var rule = extended_split(ruledata, ")", 2)[1];
-	var L = convert_graph(rule.split("=>")[0], "subgraph", "_L");
-	var R = convert_graph(rule.split("=>")[1], "subgraph", "_R");
+	var L = convert_graph(rule.split("=>")[0], "subgraph", "L");
+	var R = convert_graph(rule.split("=>")[1], "subgraph", "R");
 	var digraph = "digraph Rule { forcelabels=true; rankdir=TB;\n";
 	var decllist = extended_split(decl, "(", 2);
 	var vars = "(" + decllist[1];
@@ -125,7 +125,7 @@ function convert_rule(ruledata){
 	digraph = digraph + L;
 	digraph = digraph + "\n" + R;
 
-	digraph = digraph + "cluster_LInvisSrc -> cluster_RInvisSrc [ltail=cluster_L lhead=cluster_R]\n";
+	digraph = digraph + "LInvisSrc -> RInvisSrc [ltail=cluster_L lhead=cluster_R]\n";
 	digraph = digraph + "{ rank = same; cluster_L; cluster_R }\n";
 	digraph = digraph + "\n}\n";
 	console.log(digraph);
