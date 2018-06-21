@@ -35,6 +35,7 @@ function convert_graph(data, type, name){
 	digraph = digraph + "\n";
 	var nodeList = nodes.split(")");
 	var i;
+	var nodes = "";
 	for(i = 0; i < nodeList.length; i++){
 		var node = nodeList[i];
 		node = node.trim();
@@ -60,11 +61,12 @@ function convert_graph(data, type, name){
 		if(type == "subgraph"){
 			idmod = id + name;
 		}
-		digraph = digraph + "\n     " + idmod + " [label= <" + label + "<BR /><BR /><FONT POINT-SIZE=\"9\">" + id + "</FONT>>, shape=ellipse";
+		var newnodes = "     " + idmod + " [label= <" + label + "<BR /><BR /><FONT POINT-SIZE=\"9\">" + id + "</FONT>>, shape=ellipse";
 		if(mark != "Uncoloured"){
-			digraph = digraph + ", style=filled, fillcolor=" + mark;
+			newnodes = newnodes + ", style=filled, fillcolor=" + mark;
 		}
-		digraph = digraph + "]";
+		newnodes = newnodes + "]";
+		nodes = newnodes + "\n" + nodes;
 	}
 	var edgeList = edges.split(")");
 	for(i = 0; i < edgeList.length; i++){
@@ -94,10 +96,10 @@ function convert_graph(data, type, name){
 		}
 		if(label == "empty"){
 			label = "";
-			digraph = digraph + "\n     " + source + "->" + target + " [constraint=false;label = <>"
+			digraph = digraph + "\n     " + source + "->" + target + " [label = <>"
 		}
 		else{
-			digraph = digraph + "\n     " + source + "->" + target + " [constraint=false;label= <<table border=\"0\" cellborder=\"0\" cellspacing=\"0\"><tr><td bgcolor=\"white\">" + label + "</td></tr></table>> ";
+			digraph = digraph + "\n     " + source + "->" + target + " [label= <<table border=\"0\" cellborder=\"0\" cellspacing=\"0\"><tr><td bgcolor=\"white\">" + label + "</td></tr></table>> ";
 		}
 		if(mark != "Uncoloured"){
 			digraph = digraph + ", color=" + mark;
