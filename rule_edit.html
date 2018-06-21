@@ -151,28 +151,28 @@
       </div>
       <div id="panes" class="split split-horizontal">
         <div id="editor" class="split">// Paste your GP 2 Rule here.
-        add_loop(a, b : list; n : int)
-        [
-        	(n0, a:n#red)
-        	(n1, b)
-        	|
-        	(e0, n1, n0, empty#red)
-        	(5, 1, 2, empty)
-        	(6, 2, 3, empty)
-        	(7, 3, 0, empty)
-        ]
-        =>
-        [
-        	(n0, a:n#red)
-        	(n1, b#red)
-        	|
-        	(e0, n1, n0, empty#red)
-        	(e1, n0, n0, empty#blue)
-        ]
-        interface = {
-          n0, n1
-        }
-        where indeg(n0) = 1
+add_loop(a, b : list; n : int)
+[
+	(n0, a:n#red)
+	(n1, b)
+	|
+	(e0, n1, n0, empty#red)
+	(5, 1, 2, empty)
+	(6, 2, 3, empty)
+	(7, 3, 0, empty)
+]
+=>
+[
+	(n0, a:n#red)
+	(n1, b#red)
+	|
+	(e0, n1, n0, empty#red)
+	(e1, n0, n0, empty#blue)
+]
+interface = {
+  n0, n1
+}
+where indeg(n0) = 1
 </div>
         <div id="graph" class="split">
           <div id="options">

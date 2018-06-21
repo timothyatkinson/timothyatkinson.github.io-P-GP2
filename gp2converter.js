@@ -78,7 +78,9 @@ function convert_graph(data, type, name){
 function convert_rule(ruledata){
 
 	var decl = ruledata.split(")")[0];
+	console.log(decl);
 	var rule = ruledata.split(")")[1];
+	console.log(rule);
 	var digraph = convert_graph(rule.split("=>")[0], "digraph", "L");
 	console.log(digraph);
 	return digraph;
