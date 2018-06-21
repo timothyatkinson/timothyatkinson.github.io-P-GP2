@@ -116,18 +116,17 @@ function convert_rule(ruledata){
 
 	var decl = extended_split(ruledata, ")", 2)[0] + ")";
 	var rule = extended_split(ruledata, ")", 2)[1];
-	var L = convert_graph(rule.split("=>")[0], "subgraph", "L");
-	var R = convert_graph(rule.split("=>")[1], "subgraph", "R");
-	var digraph = "digraph Rule { forcelabels=true; rankdir=LR;\n";
+	var L = convert_graph(rule.split("=>")[0], "subgraph", "_L");
+	var R = convert_graph(rule.split("=>")[1], "subgraph", "_R");
+	var digraph = "digraph Rule { forcelabels=true; rankdir=TB;\n";
 	var decllist = extended_split(decl, "(", 2);
 	var vars = "(" + decllist[1];
 	digraph = digraph + "label = <" + decl + ">;\n"
 	digraph = digraph + L;
 	digraph = digraph + "\n" + R;
 
-	digraph = digraph + "clusterLInvisSrc -> clusterRInvisSrc [ltail=clusterL lhead=clusterR]\n";
-	digraph = digraph + "{ rank = same; clusterL }\n";
-	digraph = digraph + "{ rank = same; clusterR }\n";
+	digraph = digraph + "cluster_LInvisSrc -> cluster_RInvisSrc [ltail=cluster_L lhead=cluster_R]\n";
+	digraph = digraph + "{ rank = same; cluster_L; cluster_R }\n";
 	digraph = digraph + "\n}\n";
 	console.log(digraph);
 	return digraph;
