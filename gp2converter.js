@@ -1,3 +1,20 @@
+function extended_split(str, separator, max) {
+    var out = [],
+        index = 0,
+        next;
+
+    while (!max || out.length < max - 1 ) {
+        next = str.indexOf(separator, index);
+        if (next === -1) {
+            break;
+        }
+        out.push(str.substring(index, next));
+        index = next + separator.length;
+    }
+    out.push(str.substring(index));
+    return out;
+};
+
 function convert_graph(data, type, name){
 	var nodes = data.split("|")[0];
 	var edges = data.split("|")[1];
@@ -77,9 +94,9 @@ function convert_graph(data, type, name){
 
 function convert_rule(ruledata){
 
-	var decl = ruledata.split(")")[0];
+	var decl = extended_split(ruledata, ")", 2)[0];
 	console.log(decl);
-	var rule = ruledata.split(")")[1];
+	var rule = extended_split(ruledata, ")", 2)[1];
 	console.log(rule);
 	var digraph = convert_graph(rule.split("=>")[0], "digraph", "L");
 	console.log(digraph);
