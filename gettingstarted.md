@@ -130,3 +130,4 @@ This will generate a file *"/tmp/gp2/gp2run"* which is a runnable implementation
 
 If everything's gone to plan this will generate a file *"/tmp/gp2/gp2.output"* which contains this produced graph:
 
+![alt text](/images/trans.png "A transitive graph.")
